@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NotificationExample">
         <activity
+            android:name=".RemoteReceiver"
+            android:exported="false" />
+        <activity
             android:name=".NoActivity"
             android:exported="false" />
         <activity
