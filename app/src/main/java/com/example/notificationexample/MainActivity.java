@@ -41,15 +41,14 @@ public class MainActivity extends AppCompatActivity {
         noIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent noPendingIntent = PendingIntent.getActivity(this,0,noIntent, PendingIntent.FLAG_ONE_SHOT);
 
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, CHANNEL_ID);
-        notificationBuilder.setSmallIcon(R.drawable.ic_message);
-        notificationBuilder.setContentTitle("Simple Notification");
-        notificationBuilder.setContentText("This is a simple notification…");
-        notificationBuilder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
-        notificationBuilder.setAutoCancel(true);
-        notificationBuilder.setContentIntent(landingPendingIntent);
-        notificationBuilder.addAction(R.drawable.ic_message, "Yes", yesPendingIntent);
-        notificationBuilder.addAction(R.drawable.ic_message, "No", noPendingIntent);
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_message)
+                .setContentTitle("Simple Notification")
+                .setContentText("This is a simple notification…")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(true).setContentIntent(landingPendingIntent)
+                .addAction(R.drawable.ic_message, "Yes", yesPendingIntent)
+                .addAction(R.drawable.ic_message, "No", noPendingIntent);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             RemoteInput remoteInput = new RemoteInput.Builder(TXT_REPLY).setLabel("Reply").build();
