@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
                 .setContentText("This is a simple notification…")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setLargeIcon(coverBitmap)
-                .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(coverBitmap).bigLargeIcon(null));
+//                .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(coverBitmap).bigLargeIcon(null))
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.lorem_ipsum_text)));
 
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
         notificationManagerCompat.notify(NOTIFICATION_ID, notificationBuilder.build());
