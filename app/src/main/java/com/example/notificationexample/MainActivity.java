@@ -6,6 +6,8 @@ import androidx.core.app.NotificationManagerCompat;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -22,11 +24,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void displayNotification(View view) {
         createNotificationChannel();
+
+        Intent landingIntent = new Intent(this, LandingActivity.class);
+        landingIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        PendingIntent landingPendingIntent = PendingIntent.getActivity(this, 0, landingIntent, PendingIntent.FLAG_ONE_SHOT);
+
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, CHANNEL_ID);
         notificationBuilder.setSmallIcon(R.drawable.ic_message);
         notificationBuilder.setContentTitle("Simple Notification");
         notificationBuilder.setContentText("This is a simple notification…");
         notificationBuilder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        notificationBuilder.setAutoCancel(true);
+        notificationBuilder.setContentIntent(landingPendingIntent);
 
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
         notificationManagerCompat.notify(NOTIFICATION_ID, notificationBuilder.build());

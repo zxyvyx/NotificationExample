@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">NotificationExample</string>
     <string name="disp_notification_button">Display Notification</string>
+    <string name="landing_acivity_text">Landing Activity</string>
 </resources>
