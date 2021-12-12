@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NotificationExample">
         <activity
+            android:name=".NoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".YesActivity"
+            android:exported="false" />
+        <activity
             android:name=".LandingActivity"
             android:exported="false" />
         <activity

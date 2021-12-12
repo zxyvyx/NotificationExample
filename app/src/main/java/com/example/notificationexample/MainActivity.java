@@ -14,7 +14,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
     private final String CHANNEL_ID = "personal_notification";
-    private final int NOTIFICATION_ID = 001;
+    public static final int NOTIFICATION_ID = 001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,14 @@ public class MainActivity extends AppCompatActivity {
 
         PendingIntent landingPendingIntent = PendingIntent.getActivity(this, 0, landingIntent, PendingIntent.FLAG_ONE_SHOT);
 
+        Intent yesIntent = new Intent(this, YesActivity.class);
+        yesIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent yesPendingIntent = PendingIntent.getActivity(this,0,yesIntent, PendingIntent.FLAG_ONE_SHOT);
+
+        Intent noIntent = new Intent(this, NoActivity.class);
+        noIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent noPendingIntent = PendingIntent.getActivity(this,0,noIntent, PendingIntent.FLAG_ONE_SHOT);
+
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, CHANNEL_ID);
         notificationBuilder.setSmallIcon(R.drawable.ic_message);
         notificationBuilder.setContentTitle("Simple Notification");
@@ -37,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         notificationBuilder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
         notificationBuilder.setAutoCancel(true);
         notificationBuilder.setContentIntent(landingPendingIntent);
+        notificationBuilder.addAction(R.drawable.ic_message, "Yes", yesPendingIntent);
+        notificationBuilder.addAction(R.drawable.ic_message, "No", noPendingIntent);
 
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
         notificationManagerCompat.notify(NOTIFICATION_ID, notificationBuilder.build());
