@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 .setContentTitle("File Transfer")
                 .setContentText("Downloading…")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setProgress(max_progress, current_progress, false);
+                .setProgress(0, 0, true);
         final NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
         notificationManagerCompat.notify(NOTIFICATION_ID, notificationBuilder.build());
 
@@ -48,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
                     while (count <= 100) {
                         count += 10;
                         sleep(1000);
-                        notificationBuilder.setProgress(max_progress, count,false);
-                        notificationManagerCompat.notify(NOTIFICATION_ID, notificationBuilder.build());
+//                        notificationBuilder.setProgress(max_progress, count,false);
+//                        notificationManagerCompat.notify(NOTIFICATION_ID, notificationBuilder.build());
                     }
                     notificationBuilder.setContentText("Download Complete")
                             .setProgress(0, 0, false);
