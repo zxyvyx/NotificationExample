@@ -5,4 +5,17 @@
     <string name="receive_text_placeholder">Here You Should See The Reply Text That Already You Submitted</string>
     <string name="yes_label_text">Yes Activity</string>
     <string name="no_label_text">No Activity</string>
+    <string name="lorem_ipsum_text">
+        consectetur adipiscing elit.
+        In ut est iaculis, maximus mi et, pellentesque nulla.
+        Mauris vitae lacinia velit, at ultrices tortor.
+        Maecenas vitae sapien eget elit tincidunt semper.
+        Etiam ac faucibus diam.
+        Aliquam id nulla fringilla, euismod enim eu, elementum leo.
+        Praesent finibus dui gravida, aliquet turpis non, viverra odio.
+        Duis dictum erat leo, in pretium risus lacinia ac.
+    </string>
+    <string name="expanded_notification">Expanded Notification</string>
+    <string name="lorem_ipsum_dolor_sit_amet">Lorem ipsum dolor sit amet</string>
+    <string name="collapsed_notification">Collapsed Notification</string>
 </resources>
