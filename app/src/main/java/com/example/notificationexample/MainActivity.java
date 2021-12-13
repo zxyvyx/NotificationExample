@@ -16,6 +16,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
     private final String CHANNEL_ID = "personal_notification";
+    public static NotificationManager notificationManager;
     public static final int NOTIFICATION_ID = 001;
     public static final String TXT_REPLY = "text_reply";
 
@@ -45,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
                 .setSmallIcon(R.drawable.ic_message)
                 .setContentTitle("Simple Notification")
                 .setContentText("This is a simple notification…")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setVibrate(new long[0])
                 .setAutoCancel(true).setContentIntent(landingPendingIntent)
                 .addAction(R.drawable.ic_message, "Yes", yesPendingIntent)
                 .addAction(R.drawable.ic_message, "No", noPendingIntent);
@@ -69,15 +71,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createNotificationChannel() {
+        notificationManager = (NotificationManager) getSystemService((NOTIFICATION_SERVICE));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence charSequenceName = "Personal Notifications";
             String description = "Include all the personal notifications";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            int importance = NotificationManager.IMPORTANCE_HIGH;
 
             NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, charSequenceName, importance);
             notificationChannel.setDescription(description);
 
-            NotificationManager notificationManager = (NotificationManager) getSystemService((NOTIFICATION_SERVICE));
             notificationManager.createNotificationChannel(notificationChannel);
         }
     }
